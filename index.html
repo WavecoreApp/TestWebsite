@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wavecore Support</title>
+  <meta name="description" content="Official Wavecore support page with contact details, FAQ, and app features." />
+  <style>
+    @font-face {
+      font-family: 'Dimica';
+      src: url('Dimica-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #030305;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --accent: #8e8cf0;
+      --glass-bg: rgba(255, 255, 255, 0.02);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --glass-hover: rgba(255, 255, 255, 0.04);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Dimica', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background Orbs */
+    .bg-orbs {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+    .orb-1 {
+      top: -10%; left: -10%;
+      width: 50vw; height: 50vw;
+      background: rgba(124, 156, 255, 0.15);
+    }
+    .orb-2 {
+      bottom: -10%; right: -10%;
+      width: 60vw; height: 60vw;
+      background: rgba(142, 240, 210, 0.1);
+      animation-delay: -5s;
+    }
+    .orb-3 {
+      top: 40%; left: 60%;
+      width: 40vw; height: 40vw;
+      background: rgba(142, 140, 240, 0.1);
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(5%, 10%) scale(1.1); }
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+    }
+    h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.1; margin-bottom: 24px; }
+    h2 { font-size: clamp(24px, 4vw, 32px); margin-bottom: 16px; color: var(--text-main); }
+    h3 { font-size: 20px; margin-bottom: 12px; }
+    p, li { color: var(--text-muted); font-size: 16px; letter-spacing: 0.01em; }
+    a { color: var(--text-main); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: var(--accent); }
+    strong { font-weight: 300; color: var(--text-main); }
+
+    /* Layout */
+    .container {
+      width: min(calc(100% - 48px), 1080px);
+      margin: 0 auto;
+      padding: 80px 0;
+      opacity: 0;
+      animation: fadeIn 1.2s forwards ease-out;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+
+    /* Glassmorphism Classes */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hero Section */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .hero-card { padding: 48px; border-radius: var(--radius-lg); }
+    .hero-copy { font-size: 18px; max-width: 90%; margin-bottom: 32px; }
+    
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    /* Buttons */
+    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--text-main);
+      color: var(--bg);
+      font-weight: 300;
+    }
+    .btn-primary:hover { transform: scale(1.02); background: #ffffff; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+    }
+    .btn-secondary:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.15); }
+
+    /* Side Cards */
+    .side-cards { display: flex; flex-direction: column; gap: 24px; }
+    .side-card { padding: 32px; }
+    .side-card ul { padding-left: 20px; margin: 0; }
+    .side-card li { margin-bottom: 8px; }
+
+    /* Sections */
+    .section-wrap {
+      padding: 48px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+    .section-header { margin-bottom: 40px; max-width: 600px; }
+    
+    /* Grid Layouts */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .feature-card { padding: 32px; background: transparent; border: 1px solid var(--glass-border); border-radius: var(--radius-md); transition: background 0.3s; }
+    .feature-card:hover { background: var(--glass-hover); }
+
+    /* FAQ Accordion */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .faq-button {
+      width: 100%;
+      background: transparent;
+      color: var(--text-main);
+      border: none;
+      padding: 24px;
+      text-align: left;
+      font-size: 18px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-icon {
+      font-size: 24px;
+      font-weight: 300;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      color: var(--text-muted);
+    }
+    .faq-item.open { background: var(--glass-hover); border-color: rgba(255,255,255,0.1); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--text-main); }
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .faq-body { padding: 0 24px 24px 24px; }
+
+    /* Footer */
+    footer { text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--glass-border); color: var(--text-muted); }
+    code.inline { font-family: monospace; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 6px; font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card, .section-wrap { padding: 32px; }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 32px; }
+      .btn { width: 100%; }
+      .hero-card, .section-wrap { padding: 24px; border-radius: 24px; }
+      .faq-button { padding: 18px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-card glass">
+        <span class="eyebrow">Wavecore Support</span>
+        <h1>Pristine playback.<br>Perfectly organized.</h1>
+        <p class="hero-copy">
+          We crafted Wavecore for music lovers who appreciate a clean, fast, and beautifully organized library. Here you'll find everything you need to get the absolute most out of your listening experience.
+        </p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="mailto:wavecoresupport@gmail.com">Contact Support</a>
+          <a class="btn btn-secondary" href="#faq">Browse FAQ</a>
+          <a class="btn btn-secondary" href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="side-cards">
+        <div class="side-card glass">
+          <h3>Need direct help?</h3>
+          <p>If you're running into issues with imports, playback, or metadata, we're here for you.</p>
+          <p>Drop us a line at: <br><a href="mailto:wavecoresupport@gmail.com"><strong>wavecoresupport@gmail.com</strong></a></p>
+        </div>
+        <div class="side-card glass">
+          <h3>How to help us help you</h3>
+          <ul>
+            <li>Tell us what you were trying to achieve.</li>
+            <li>Describe what actually happened.</li>
+            <li>Include your device model & iOS version.</li>
+            <li>Attach screenshots if applicable.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap glass" id="features">
+      <div class="section-header">
+        <h2>The Art of Listening</h2>
+        <p>Wavecore focuses on a distraction-free experience, thoughtful library tools, and a workflow that keeps your music genuinely yours.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Distraction-Free UI</h3>
+          <p>A polished, modern canvas that helps your library feel breathable, readable, and a joy to browse daily.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Total Tag Control</h3>
+          <p>Edit metadata exactly how you want it. Update titles, tweak artwork, and keep your collection meticulously clean.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Seamless Exports</h3>
+          <p>Your work stays with your files. Export your library, and all your updated metadata and artwork travel with it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap glass" id="faq">
+      <div class="section-header">
+        <h2>Common Questions</h2>
+        <p>Everything you need to know about setting up your library, managing your files, and listening in high fidelity.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item glass">
+          <button class="faq-button">How do I get started with importing? <span class="faq-icon">+</span></button>
+          <div class="faq-content">
+            <div class="faq-body">
+              <p>Navigate to <strong>Library > All Songs</strong>, and tap the <strong>+</strong> icon. You can select entire folders or individual audio files from your device. Tap <strong>Import</strong>, and Wavecore will organize them beautifully.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-button">How does the export feature work? <span class="faq-icon">+</span></button>
+          <div class="faq-content">
+            <div class="faq-body">
+              <p>Because you put time into tagging your music, Wavecore ensures you never lose that effort. Go to <strong>Settings > Library > Export Library</strong>. We'll export your files with all your custom artwork and metadata changes permanently embedded.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-button">What audio formats do you support? <span class="faq-icon">+</span></button>
+          <div class="faq-content">
+            <div class="faq-body">
+              <p>Wavecore is built for Hi-Res audio. We support a wide range of standard and lossless formats natively, ensuring your music sounds exactly as the artist intended.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-button">Is my data collected? <span class="faq-icon">+</span></button>
+          <div class="faq-content">
+            <div class="faq-body">
+              <p>No. Your music library is deeply personal, and it stays entirely on your device. Check out our <a href="privacy.html">Privacy Policy</a> for complete details.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Wavecore requires iOS 18 / iPadOS 18 or later. Current version: <code class="inline">1.0</code></p>
+      <p>© 2026 Wavecore. Built for the love of music.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth FAQ Accordion
+    document.querySelectorAll('.faq-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const content = item.querySelector('.faq-content');
+        const isOpen = item.classList.contains('open');
+
+        // Close all other accordions
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          otherItem.classList.remove('open');
+          otherItem.querySelector('.faq-content').style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
