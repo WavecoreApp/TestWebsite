@@ -15,7 +15,7 @@
     }
 
     :root {
-      --bg: #1c1c1e;
+      --bg: #1c1c1e; /* Темно-серый премиум фон */
       --text-main: #f5f5f7;
       --text-muted: #a1a1a6;
       --accent: #8e8cf0;
@@ -28,6 +28,7 @@
 
     * { box-sizing: border-box; }
     
+    /* Убираем рамку при клике на мобилках */
     a, button {
       -webkit-tap-highlight-color: transparent;
       outline: none;
@@ -47,7 +48,7 @@
       position: relative;
     }
 
-    /* Animated Background Orbs */
+    /* Анимированные сферы на фоне */
     .bg-orbs {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -59,7 +60,7 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(120px);
-      opacity: 0.25;
+      opacity: 0.25; 
       animation: float 20s infinite ease-in-out alternate;
     }
     .orb-1 {
@@ -85,7 +86,7 @@
       100% { transform: translate(5%, 10%) scale(1.1); }
     }
 
-    /* Typography */
+    /* Типографика */
     h1, h2, h3 {
       font-weight: 300;
       letter-spacing: -0.02em;
@@ -99,7 +100,7 @@
     a:hover { color: var(--accent); }
     strong { font-weight: 300; color: var(--text-main); }
 
-    /* Layout */
+    /* Сетка */
     .container {
       width: min(calc(100% - 48px), 1080px);
       margin: 0 auto;
@@ -113,17 +114,17 @@
       from { opacity: 0; transform: translateY(20px); }
     }
 
-    /* Glassmorphism Classes */
+    /* Матовое стекло */
     .glass {
       background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
     }
 
-    /* Hero Section */
+    /* Главный блок */
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -146,7 +147,7 @@
       margin-bottom: 24px;
     }
 
-    /* Buttons */
+    /* Кнопки */
     .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn {
       display: inline-flex;
@@ -171,13 +172,13 @@
     }
     .btn-secondary:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.15); }
 
-    /* Side Cards */
+    /* Карточки сбоку */
     .side-cards { display: flex; flex-direction: column; gap: 24px; }
     .side-card { padding: 32px; }
     .side-card ul { padding-left: 20px; margin: 0; }
     .side-card li { margin-bottom: 8px; }
 
-    /* Sections */
+    /* Секции */
     .section-wrap {
       padding: 48px;
       border-radius: var(--radius-lg);
@@ -185,20 +186,23 @@
     }
     .section-header { margin-bottom: 40px; max-width: 600px; }
     
-    /* Grid Layouts */
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
     .feature-card { padding: 32px; background: transparent; border: 1px solid var(--glass-border); border-radius: var(--radius-md); transition: background 0.3s; }
     .feature-card:hover { background: var(--glass-hover); }
 
-    /* FAQ Accordion */
+    /* Спойлеры FAQ (ОПТИМИЗИРОВАННЫЕ, БЕЗ БЛЮРА И МЕРЦАНИЯ) */
     .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    
     .faq-item {
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       transition: all 0.3s ease;
-      will-change: transform;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
+    
     .faq-button {
       width: 100%;
       background: transparent;
@@ -213,24 +217,36 @@
       justify-content: space-between;
       align-items: center;
     }
+    
     .faq-icon {
       font-size: 24px;
       font-weight: 300;
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       color: var(--text-muted);
     }
-    .faq-item.open { background: var(--glass-hover); border-color: rgba(255,255,255,0.1); }
-    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--text-main); }
+    
+    .faq-item.open { 
+      background: var(--glass-hover); 
+      border-color: rgba(255,255,255,0.1); 
+    }
+    .faq-item.open .faq-icon { 
+      transform: rotate(45deg); 
+      color: var(--text-main); 
+    }
+    
     .faq-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
+    
     .faq-body { padding: 0 24px 24px 24px; }
 
-    /* Footer */
+    /* Подвал */
     footer { text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--glass-border); color: var(--text-muted); }
     code.inline { font-family: monospace; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 6px; font-size: 14px; }
 
@@ -313,7 +329,7 @@
         <p>Everything you need to know about setting up your library, managing your files, and listening in high fidelity.</p>
       </div>
       <div class="faq-list">
-        <div class="faq-item glass">
+        <div class="faq-item">
           <button class="faq-button">How do I get started with importing? <span class="faq-icon">+</span></button>
           <div class="faq-content">
             <div class="faq-body">
@@ -321,7 +337,7 @@
             </div>
           </div>
         </div>
-        <div class="faq-item glass">
+        <div class="faq-item">
           <button class="faq-button">How does the export feature work? <span class="faq-icon">+</span></button>
           <div class="faq-content">
             <div class="faq-body">
@@ -329,7 +345,7 @@
             </div>
           </div>
         </div>
-        <div class="faq-item glass">
+        <div class="faq-item">
           <button class="faq-button">What audio formats do you support? <span class="faq-icon">+</span></button>
           <div class="faq-content">
             <div class="faq-body">
@@ -337,7 +353,7 @@
             </div>
           </div>
         </div>
-        <div class="faq-item glass">
+        <div class="faq-item">
           <button class="faq-button">Is my data collected? <span class="faq-icon">+</span></button>
           <div class="faq-content">
             <div class="faq-body">
@@ -355,19 +371,20 @@
   </div>
 
   <script>
-    // Smooth FAQ Accordion
+    // Плавный аккордеон для FAQ
     document.querySelectorAll('.faq-button').forEach(button => {
       button.addEventListener('click', () => {
         const item = button.parentElement;
         const content = item.querySelector('.faq-content');
         const isOpen = item.classList.contains('open');
 
-        // Close all other accordions
+        // Закрываем остальные
         document.querySelectorAll('.faq-item').forEach(otherItem => {
           otherItem.classList.remove('open');
           otherItem.querySelector('.faq-content').style.maxHeight = null;
         });
 
+        // Открываем текущий
         if (!isOpen) {
           item.classList.add('open');
           content.style.maxHeight = content.scrollHeight + "px";
