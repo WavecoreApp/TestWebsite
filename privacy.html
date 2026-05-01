@@ -25,11 +25,11 @@
     }
 
     * { box-sizing: border-box; }
-    a, button {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-    }
     
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
 
     body {
       margin: 0;
@@ -55,7 +55,7 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(120px);
-      opacity: 0.3;
+      opacity: 0.25;
       animation: float 20s infinite ease-in-out alternate;
     }
     .orb-1 { top: 10%; left: 10%; width: 40vw; height: 40vw; background: rgba(142, 240, 210, 0.1); }
@@ -81,8 +81,8 @@
 
     .card {
       background: var(--glass-bg);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
       padding: 56px;
