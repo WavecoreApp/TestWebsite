@@ -193,11 +193,16 @@
     /* FAQ Accordion */
     .faq-list { display: flex; flex-direction: column; gap: 12px; }
     .faq-item {
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      will-change: transform;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  /* force (GPU) */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
     }
     .faq-button {
       width: 100%;
@@ -222,9 +227,13 @@
     .faq-item.open { background: var(--glass-hover); border-color: rgba(255,255,255,0.1); }
     .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--text-main); }
     .faq-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms ease;
+  /* on GPU */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
