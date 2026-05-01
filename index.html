@@ -226,9 +226,9 @@
     .faq-item.open { background: var(--glass-hover); border-color: rgba(255,255,255,0.1); }
     .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--text-main); }
 .faq-content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 260ms ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   /* on GPU */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
