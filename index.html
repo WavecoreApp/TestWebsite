@@ -203,7 +203,6 @@
   backface-visibility: hidden;
   will-change: transform;
 }
-    }
     .faq-button {
       width: 100%;
       background: transparent;
@@ -226,17 +225,16 @@
     }
     .faq-item.open { background: var(--glass-hover); border-color: rgba(255,255,255,0.1); }
     .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--text-main); }
-    .faq-content {
+.faq-content {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 260ms ease;
   /* on GPU */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
     .faq-body { padding: 0 24px 24px 24px; }
 
     /* Footer */
